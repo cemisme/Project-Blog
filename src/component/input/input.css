@@ -1,0 +1,19 @@
+/* input{
+    width: 100%;
+    padding: 16px;
+    transition: 0.4s linear;
+    background-color: var(--grayLight-color);
+    border: transparent;
+    border-radius: 8px;
+    font-size: 16px;
+}
+input::placeholder{
+    color: #84878b;
+    font-size: 16px;
+    font-weight: 500px;
+    line-height: 30px;
+}
+.field-input:visited{
+    background-color: white;
+    border: 1px solid #00B4AA;
+} */
