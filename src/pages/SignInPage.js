@@ -25,10 +25,9 @@ import GetDocs from "../firebase-app/GetDocs";
 import { toast } from "react-toastify";
 import { async } from "@firebase/util";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/context-config";
 
-// const colRef = collection(db, "infor user login");
 
 const SignInPage = () => {
   const validate = (values) => {
@@ -48,8 +47,7 @@ const SignInPage = () => {
   };
   const navigate = useNavigate();
   const { userInfo } = useAuth();
-  console.log(userInfo);
-  if (userInfo.email) {
+  if (userInfo?.email) {
     navigate("/");
   }
   const formik = useFormik({
@@ -59,18 +57,7 @@ const SignInPage = () => {
     },
     validate,
     onSubmit: async (values) => {
-      // addDoc(colRef, {
-      //   Email: values.Email,
-      //   Password: values.Password,
-      //   createdAt: serverTimestamp(),
-      // })
-      //   .then(() => {
-      //     // reset form
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //     // reset form
-      //   });
+      
       if (!formik.isValid) return;
       try {
         await signInWithEmailAndPassword(auth, values.Email, values.Password);
@@ -127,12 +114,20 @@ const SignInPage = () => {
               <div className="error-text">{formik.errors.Password}</div>
             ) : null}
           </Field>
+
           <Button
             type="submit"
             disabled={formik.isSubmitting}
             loading={formik.isSubmitting}
-            children={"SignUp"}
+            children={"SignIn"}
           ></Button>
+          <div className="text-signup">
+            Bạn chưa có tài khoản ?{" "}
+            <NavLink to="/signup">
+              <span>Đăng kí </span>
+            </NavLink>
+            ngay
+          </div>
         </form>
       </div>
     </>

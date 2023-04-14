@@ -13,7 +13,19 @@ const Button = ({
   to,
 }) => {
   const child = !!loading ? <LoadingSpinner></LoadingSpinner> : children;
-
+  if (to !== "" && typeof to === "string") {
+    return (
+      <NavLink to={to}>
+        <button
+          type={type}
+          className={!!className ? className : "button-signup"}
+          disabled={disabled}
+        >
+          {child}
+        </button>
+      </NavLink>
+    );
+  }
   return (
     <button
       type={type}

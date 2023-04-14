@@ -141,7 +141,7 @@ import { auth, db } from "../firebase-app/firebase-config";
 import GetDocs from "../firebase-app/GetDocs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useAuth } from "../context/context-config";
 const colRef = collection(db, "user infor");
@@ -175,10 +175,8 @@ const SignUpPage = () => {
   };
   const navigate = useNavigate();
   const { userInfo } = useAuth();
-  const {email}=userInfo
-  console.log(email)
- 
-    if (email) {
+  
+    if (userInfo?.email) {
       navigate("/")
     } 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -204,7 +202,7 @@ const SignUpPage = () => {
           console.log(err);
           // reset form
         });
-      await createUserWithEmailAndPassword(auth, values.Email, values.Password);
+      await createUserWithEmailAndPassword(auth, values.Email, values.Password, values.Fullname);
       formik.setSubmitting &&
         toast.success("Signup success", {
           pauseOnHover: false,
@@ -251,6 +249,7 @@ const SignUpPage = () => {
           </Field>
           <Field>
             <Label htmlFor={"Password"} Children={"Password"}></Label>
+
             <Input
               onBlur={formik.handleBlur}
               name="Password"
@@ -269,6 +268,13 @@ const SignUpPage = () => {
             loading={formik.isSubmitting}
             children={"SignUp"}
           ></Button>
+           <div className="text-signup">
+            Bạn đã có tài khoản ?{" "}
+            <NavLink to="/signin">
+              <span>Đăng nhập </span>
+            </NavLink>
+            ngay
+          </div>
         </form>
       </div>
     </>
