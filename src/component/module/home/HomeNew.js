@@ -1,5 +1,9 @@
 import React from "react";
 import "../../../pages/stylePages.scss";
+import PostCategory from "../post/PostCategory";
+import PostTitle from "../post/PostTitle";
+import PostMeta from "../post/PostMeta";
+import PostImage from "../post/PostImage";
 
 const HomeNew = () => {
   return (
@@ -7,57 +11,119 @@ const HomeNew = () => {
       <div className="titleheader-new">Newest update</div>
       <div className="new-wrap">
         <div className="new-contentleft">
-          <img srcSet="../../banlamviec1.jpg" alt="hinhanh"></img>
-          <div className="button-new">Kiến thức</div>
-          <div className="title-new">
+          <PostImage
+            className={"new-contentleftimg"}
+            url={"../../banlamviec1.jpg"}
+            alt={"hinhanh"}
+          ></PostImage>
+          <PostCategory className={"catelogy2"}>Kiến Thức</PostCategory>
+          <PostTitle className={"title-new"}>
             Hướng dẫn setup phòng cực chill dành cho người mới toàn tập
-          </div>
-          <div className="date-author">
-            <div className="date">Mar 23</div>
-            <div className="author">Andiez Le</div>{" "}
-          </div>
+          </PostTitle>
+          <PostMeta date={"Mar 23"} author={"Andiez Le"}></PostMeta>
         </div>
         <div className="new-contentright">
           <div className="grid-content">
             <div className="grid-item">
-              <img srcSet="../../banlamviec.png" alt=""></img>
+              <PostImage
+                className={"grid-itemimg"}
+                url={"../../banlamviec1.jpg"}
+                alt={"hinhanh"}
+              ></PostImage>
+
               <div className="contentnew-right">
-                <div className="button-newright">Kiến thức</div>
-                <div className="title-new-right">
+                <PostCategory className={"catelogy"}>Kiến Thức</PostCategory>
+                <PostTitle className={"title-new-right"}>
                   Hướng dẫn setup phòng cực chill dành cho người mới toàn tập
-                </div>
-                <div className="date-author">
-                  <div className="date">Mar 23</div>
-                  <div className="author">Andiez Le</div>
-                </div>
+                </PostTitle>
+                <PostMeta date={"Mar 23"} author={"Andiez Le"}></PostMeta>
               </div>
             </div>
             <div className="grid-item">
-              <img srcSet="../../banlamviec.png" alt=""></img>
+              <PostImage
+                className={"grid-itemimg"}
+                url={"../../banlamviec1.jpg"}
+                alt={"hinhanh"}
+              ></PostImage>
+
               <div className="contentnew-right">
-                <div className="button-newright">Kiến thức</div>
-                <div className="title-new-right">
+                <PostCategory className={"catelogy"}>Kiến Thức</PostCategory>
+                <PostTitle className={"title-new-right"}>
                   Hướng dẫn setup phòng cực chill dành cho người mới toàn tập
-                </div>
-                <div className="date-author">
-                  <div className="date">Mar 23</div>
-                  <div className="author">Andiez Le</div>
-                </div>
+                </PostTitle>
+                <PostMeta date={"Mar 23"} author={"Andiez Le"}></PostMeta>
               </div>
             </div>
             <div className="grid-item">
-              <img srcSet="../../banlamviec.png" alt=""></img>
+              <PostImage
+                className={"grid-itemimg"}
+                url={"../../banlamviec1.jpg"}
+                alt={"hinhanh"}
+              ></PostImage>
+
               <div className="contentnew-right">
-                <div className="button-newright">Kiến thức</div>
-                <div className="title-new-right">
+                <PostCategory className={"catelogy"}>Kiến Thức</PostCategory>
+                <PostTitle className={"title-new-right"}>
                   Hướng dẫn setup phòng cực chill dành cho người mới toàn tập
-                </div>
-                <div className="date-author">
-                  <div className="date">Mar 23</div>
-                  <div className="author">Andiez Le</div>
-                </div>
+                </PostTitle>
+                <PostMeta date={"Mar 23"} author={"Andiez Le"}></PostMeta>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="new-contentbot">
+        <div className="grid-contentbot">
+          <div className="contentbot-item">
+            <PostImage
+              className={"contentbot-itemimg"}
+              url={"../../banlamviec1.jpg"}
+              alt={"hinhanh"}
+            ></PostImage>
+
+            <PostCategory className={"catelogy2"}>Kiến Thức</PostCategory>
+            <PostTitle className={"title-contentbot"}>
+              Hướng dẫn setup phòng cực chill dành cho người mới toàn tập
+            </PostTitle>
+            <PostMeta date={"Mar 23"} author={"Andiez Le"}></PostMeta>
+          </div>
+          <div className="contentbot-item">
+            <PostImage
+              className={"contentbot-itemimg"}
+              url={"../../banlamviec1.jpg"}
+              alt={"hinhanh"}
+            ></PostImage>
+
+            <PostCategory className={"catelogy2"}>Kiến Thức</PostCategory>
+            <PostTitle className={"title-contentbot"}>
+              Hướng dẫn setup phòng cực chill dành cho người mới toàn tập
+            </PostTitle>
+            <PostMeta date={"Mar 23"} author={"Andiez Le"}></PostMeta>
+          </div>
+          <div className="contentbot-item">
+            <PostImage
+              className={"contentbot-itemimg"}
+              url={"../../banlamviec1.jpg"}
+              alt={"hinhanh"}
+            ></PostImage>
+
+            <PostCategory className={"catelogy2"}>Kiến Thức</PostCategory>
+            <PostTitle className={"title-contentbot"}>
+              Hướng dẫn setup phòng cực chill dành cho người mới toàn tập
+            </PostTitle>
+            <PostMeta date={"Mar 23"} author={"Andiez Le"}></PostMeta>
+          </div>
+          <div className="contentbot-item">
+            <PostImage
+              className={"contentbot-itemimg"}
+              url={"../../banlamviec1.jpg"}
+              alt={"hinhanh"}
+            ></PostImage>
+            <PostCategory className={"catelogy2"}>Kiến Thức</PostCategory>
+            <PostTitle className={"title-contentbot"}>
+              Hướng dẫn setup phòng cực chill dành cho người mới toàn tập
+            </PostTitle>
+            <PostMeta date={"Mar 23"} author={"Andiez Le"}></PostMeta>
           </div>
         </div>
       </div>
