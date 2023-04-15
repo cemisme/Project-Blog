@@ -6,10 +6,10 @@
 // export {Label};
 import React from 'react';
 import '../../pages/stylePages.scss'
-const Label = ({htmlFor,Children}) => {
+const Label = ({htmlFor,Children, className}) => {
   return (
     <>
-      <label htmlFor={htmlFor} className='field-label' >{Children}</label>
+      <label htmlFor={htmlFor} className={className?className:'field-label'} >{Children}</label>
     </>
   );
 };

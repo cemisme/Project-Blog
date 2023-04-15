@@ -6,6 +6,7 @@ import SignUpPage from "./pages/SignUpPage";
 import { Routes, Route, Link, NavLink} from "react-router-dom";
 import   Count  from "./component/Count";
 import FoundPage from "./pages/FoundPage";
+import AddPage from "./pages/AddPage";
 function App() {
   return (
     <div>
@@ -15,6 +16,8 @@ function App() {
           <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
           <Route path="/signin" element={<SignInPage></SignInPage>}></Route>
           <Route path="*" element={<FoundPage></FoundPage>}></Route>
+          <Route path="/addnew" element={<AddPage></AddPage>}></Route>
+         
 
         </Routes>
       </AuthProvider>

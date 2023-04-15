@@ -65,7 +65,7 @@ import IconEyeShow from "../icon/IconEyeShow";
 import InconEyeHide from "../icon/InconEyeHide";
 import "./input.css";
 
-const Input = ({ name, placeholder, type, onChange, values, onBlur }) => {
+const Input = ({ name, placeholder, type, onChange, values, onBlur, className }) => {
   const [togglePass, setTogglePass] = useState(true);
 
   if (name === "password") {
@@ -75,9 +75,9 @@ const Input = ({ name, placeholder, type, onChange, values, onBlur }) => {
           onBlur={onBlur}
           value={values}
           onChange={onChange}
-          className="field-input"
+          className={!!className?className:"field-input"}
           id={name}
-          type={togglePass ? "password" : "text"}
+          type={togglePass ? "password" : type}
           name={name}
           placeholder={placeholder}
         ></input>
@@ -95,7 +95,7 @@ const Input = ({ name, placeholder, type, onChange, values, onBlur }) => {
         onBlur={onBlur}
         value={values}
         onChange={onChange}
-        className="field-input"
+        className={!!className?className:"field-input"}
         id={name}
         type={type}
         name={name}
