@@ -10,8 +10,8 @@
   margin: 0 auto;
   width: 100%;
 }
-.container-home{
-  
+
+.container-home {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
@@ -24,7 +24,7 @@ body {
 *:focus {
   outline: none;
 }
-a{
+a {
   text-decoration: none;
   color: black;
 }
@@ -38,7 +38,17 @@ a{
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-
+.hidden-input {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
@@ -54,7 +64,9 @@ html {
 body {
   margin: 0;
 }
-
+button:focus {
+  outline: none;
+}
 /**
    * Render the `main` element consistently in IE.
    */

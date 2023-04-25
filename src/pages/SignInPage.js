@@ -50,6 +50,8 @@ const SignInPage = () => {
   if (userInfo?.email) {
     navigate("/");
   }
+  
+  
   const formik = useFormik({
     initialValues: {
       Email: "",
@@ -69,9 +71,9 @@ const SignInPage = () => {
         setTimeout(() => {
           formik.setSubmitting(false);
           navigate("/");
-        }, 5000);
+        }, 6000);
       } catch (error) {
-        if (error.message.includes("wrong-password"))
+        if (error.message.includes("wrong-password") || (error.message.includes("user-not-found")))
           toast.error("Tài Khoản hoặc mật khẩu sai", {
             pauseOnHover: false,
             delay: 0,

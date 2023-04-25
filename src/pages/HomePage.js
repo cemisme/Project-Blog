@@ -11,37 +11,19 @@ import HomeFreature from "../component/module/home/HomeFreature";
 import HomeNew from "../component/module/home/HomeNew";
 
 const HomePage = () => {
-  // const [posts, setPosts] = useState([]);
   const { userInfo } = useAuth();
-  // useEffect(() => {
-  //   onSnapshot(colRef, (snapshot) => {
-  //     let posts = [];
-  //     snapshot.docs.forEach((doc) => {
-  //       posts.push({
-  //         id: doc.id,
-  //         ...doc.data(),
-  //       });
-  //     });
-  //     setPosts(posts);
-  //   });
-  // }, []);
-  // const { posts, userInfo } = useAuth();
-  // const userName = posts.map((item) => {
-  //   if (item.Email === userInfo.email) {
-  //     return item.Fullname;
-  //   }
-  // });
   const navigate = useNavigate();
   console.log(userInfo);
-  if (!userInfo?.email) {
-    navigate("/signin");
-  }
-  // const handleSignOut = () => {
-  //   toast.success("Đã Đăng Xuất");
+  // if (!userInfo.email) {
   //   navigate("/signin");
-  //   signOut(auth);
-  // navigate("/signin");
-  // };
+  // }
+  const handleSignOut = () => {
+    toast.success("Đã Đăng Xuất");
+    signOut(auth);
+    setTimeout(()=>{
+      navigate("/signin");
+    },2000)
+  };
 
   return (
     <>
@@ -50,8 +32,7 @@ const HomePage = () => {
         <HomeFreature></HomeFreature>
         <HomeNew></HomeNew>
       </Layout>
-      {/* <Header user={userInfo} userName={userName}></Header> */}
-      {/* <button onClick={handleSignOut}>Sign out</button> */}
+      <button onClick={handleSignOut}>Sign out</button>
     </>
   );
 };

@@ -7,7 +7,7 @@ const AddPage = () => {
     const { userInfo } = useAuth();
     return (
         <Layout user={userInfo}>
-        <PostAdd></PostAdd>
+        <PostAdd user={userInfo}></PostAdd>
       </Layout>
     );
 };

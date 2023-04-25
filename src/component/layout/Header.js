@@ -6,7 +6,6 @@ import { useAuth } from "../../context/context-config";
 
 const Header = ({user}) => {
   const { userName } = useAuth();
- console.log("hi"+user)
   return (
     <>
       <div className="container-home">

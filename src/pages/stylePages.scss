@@ -479,7 +479,7 @@
   line-height: 24px;
 }
 .wrap-addtop {
-  margin-top: 100px;
+  margin-top: 20;
   display: flex;
   column-gap: 20%;
 }
@@ -500,15 +500,35 @@
   margin-bottom: 20px;
 }
 .addinput {
+  cursor: pointer;
   font-weight: 500;
   margin-bottom: 10px;
-  width: 60%;
-  height: 60px;
+  width: 100%;
   border-radius: 8px;
-
+  object-fit: cover;
   padding: 5px 20px 20px 0;
   transition: all 0.4s linear;
   border: 0px solid transparent;
+}
+.addinput2 {
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 10px;
+  width: 50%;
+  border-radius: 8px;
+  object-fit: cover;
+  padding: 5px 20px 20px 0;
+  transition: all 0.4s linear;
+  border: 0px solid transparent;
+  position: relative;
+}
+
+.addinput3 {
+  max-width: 475px;
+  position: absolute;
+  height: 10px;
+  background-color: rgb(20, 190, 212);
+  transition: linear 3s;
 }
 .textarea-add {
   overflow: hidden;
@@ -546,8 +566,9 @@
 }
 .status-catelogy {
   display: flex;
-  column-gap: 20%;
   margin-top: 5px;
+  align-items: center;
+  column-gap: 400px;
 }
 .status-add {
   height: 100%;
@@ -563,8 +584,118 @@
   width: 40px;
   cursor: pointer;
   margin-left: 17px;
+  margin-top: 30px;
 }
 .status-addname {
   cursor: pointer;
   margin-left: 3px;
+  margin-top: 30px;
+}
+.button-add {
+  height: 60px;
+  width: 30%;
+  background: linear-gradient(107.61deg, #00a7b4 15.59%, #a4d96c 87.25%);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  margin-top: 40px;
+  border: transparent;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+.addImage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  svg {
+    width: 50px;
+    height: 50px;
+    background-color: #c5b5b5;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    color: rgb(167, 48, 48);
+  }
+}
+.addImage svg:hover {
+  background-color: #888;
+  transition: all 1s;
+  font-weight: bold;
+}
+.dropdown-categori {
+  margin-top: 35px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 300px;
+
+  svg {
+    width: 30px;
+  }
+}
+.check-hotnew {
+  margin-top: 6px;
+  label {
+    margin-left: -10px;
+  }
+}
+.dropbtn {
+  position: relative;
+  background: linear-gradient(107.61deg, #00a7b4 15.59%, #a4d96c 87.25%);
+  border-radius: 10px;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* Style the dropdown content */
+.dropdown-content {
+  margin-top: 10px;
+  display: none;
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* Show the dropdown content when the user clicks on the dropdown button */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Style the links inside the dropdown */
+// .dropdown-content {
+//   color: black;
+//   padding: 12px 16px;
+//   text-decoration: none;
+//   display: block;
+// }
+
+/* Change the background color of the links on hover */
+.dropdown-content:hover {
+  font-weight: bold;
+  transition: linear 0.2s;
+}
+.dropdown {
+  margin-bottom: 200px;
+  max-width: 200px;
+}
+.wrap-categories {
+  display: flex;
+  flex-direction: column;
+}
+.addnewpost-title{
+  margin-top: 100px;
+  font-weight: bolder;
+  color: #00A7B4 ;
+  font-size: 45px;
 }

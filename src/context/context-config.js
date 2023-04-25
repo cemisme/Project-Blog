@@ -9,11 +9,11 @@ function AuthProvider(props) {
   const [userInfo, setUserInfo] = useState({});
   const [posts, setPosts] = useState([]);
   const userName = posts.map((item) => {
-    if (item.Email === userInfo.email) {
+    if (item.Email === userInfo?.email) {
       return item.Fullname;
     }
   });
-  const value = { userName, userInfo, setUserInfo };
+  const value = { userName, userInfo, setUserInfo, posts };
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setUserInfo(user);
