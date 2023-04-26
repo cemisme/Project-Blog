@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../../pages/stylePages.scss";
 import Button from "../../button/Button";
 const HomeBanner = () => {
+  const [posts, setPost]=useState()
+
   return (
     <div className="container-home">
       <div className="banner-wrap">

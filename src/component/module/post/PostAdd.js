@@ -13,23 +13,37 @@ import {
   deleteObject,
 } from "firebase/storage";
 import Toggle from "../../button/toggle/Toggle";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, serverTimestamp, where } from "firebase/firestore";
 import { db } from "../../../firebase-app/firebase-config";
 import { FirebaseError } from "firebase/app";
 import { Dropdown } from "../../dropdown";
 import { useAuth } from "../../../context/context-config";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 const PostAdd = ({ user }) => {
   console.log(user.uid);
+  const navigate = useNavigate();
+  const [categoriId, setCategoriId] = useState();
   const [categories, setCategories] = useState([]);
   const [progress, setProgress] = useState(0);
   const [image, setImage] = useState("");
   const validate = (values) => {
     const errors = {};
-    if (!values.Title || !values.Description) {
+    if (!values.Title) {
       errors.Title = "Required";
     }
-
+    if (!values.Description) {
+      errors.Description = "Required";
+    }
+    if (!values.Image) {
+      errors.Image = "Required";
+    }
+    if (!values.Content) {
+      errors.Content = "Required";
+    }
+    if (!values.Categories) {
+      errors.Categories = "Required";
+    }
     return errors;
   };
   const formik = useFormik({
@@ -45,17 +59,24 @@ const PostAdd = ({ user }) => {
     validate,
     onSubmit: async (values) => {
       const cloneValues = { ...values };
-      cloneValues.Slug = slugify(cloneValues.Slug || cloneValues.Title);
-      
-      const colRef = collection(db, "posts");
-      await addDoc(colRef, {
-        ...cloneValues,
-        image: image,
-        userId: user.uid,
+      cloneValues.Slug = slugify(cloneValues.Slug || cloneValues.Title, {
+        lower: true,
       });
-      toast.success("Thêm tin thành công");
+      const colRef = collection(db, "posts");
+      try {
+        await addDoc(colRef, {
+          ...cloneValues,
+          // categoriesID:formik.values.Categories.id,
+          image: image,
+          userId: user.uid,
+          categoriId: categoriId,
+          createdAt: serverTimestamp()
+        });
+        toast.success("Thêm tin thành công");
+      } catch (error) {}
     },
   });
+  console.log(formik.values);
   const ref2 = useRef();
   const ref1 = useRef();
   const onChangeUploadImage = (e) => {
@@ -101,6 +122,17 @@ const PostAdd = ({ user }) => {
     a.style.height = "1px";
     a.style.height = 1 + a.scrollHeight + "px";
   }
+  // lấy categori ID
+  useEffect(() => {
+    if (formik.values.Categories) {
+      categories.forEach((item) => {
+        if (item.name === formik.values.Categories) {
+          setCategoriId(item.id);
+        }
+      });
+    }
+  }, [categories, formik.values.Categories]);
+  console.log(categoriId);
   function textAreaAdjust1() {
     const a = ref.current;
     a.style.height = "1px";
@@ -131,13 +163,13 @@ const PostAdd = ({ user }) => {
         result.push({
           id: doc.id,
           ...doc.data(),
+          
         });
       });
       setCategories(result);
     }
     getData();
   }, []);
-  console.log(categories);
   return (
     <div className="container-home">
       <h1 className="addnewpost-title">Add new post</h1>
@@ -165,6 +197,9 @@ const PostAdd = ({ user }) => {
               name="Description"
               className="textarea-add"
             ></textarea>
+            {formik.touched.Description && formik.errors.Description ? (
+              <div className="error-text">{formik.errors.Description}</div>
+            ) : null}
           </div>
           <div className="addright">
             <Label htmlFor={"Slug"} Children={"Slug"}></Label>
@@ -185,6 +220,9 @@ const PostAdd = ({ user }) => {
               progress={progress}
               handleRemove={handleRemove}
             ></Input>
+            {formik.touched.Image && formik.errors.Image ? (
+              <div className="error-text">{formik.errors.Image}</div>
+            ) : null}
           </div>
         </div>
         <div className="addbot">
@@ -198,6 +236,9 @@ const PostAdd = ({ user }) => {
             name="Content"
             className="textarea-content"
           ></textarea>
+          {formik.touched.Content && formik.errors.Content ? (
+            <div className="error-text">{formik.errors.Content}</div>
+          ) : null}
         </div>
         <div className="status-catelogy">
           <div className="status-wrap">
@@ -279,6 +320,9 @@ const PostAdd = ({ user }) => {
                   {item.name}
                 </div>
               ))}
+            {formik.touched.Categories && formik.errors.Categories ? (
+              <div className="error-text">{formik.errors.Categories}</div>
+            ) : null}
           </div>
         </div>
 

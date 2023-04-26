@@ -271,8 +271,9 @@
     background-blend-mode: overlay;
     background-size: cover;
     mix-blend-mode: color;
-    opacity: 0.6;
+    // opacity: 0.6;
     border-radius: 15px;
+    cursor: pointer;
   }
 }
 // .item-fea::before{
@@ -309,6 +310,12 @@
   font-size: 22px;
   line-height: 28px;
   margin-left: 26px;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
 }
 .wapper-author {
   align-items: center;
@@ -318,7 +325,7 @@
 .layout {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(78, 77, 77, 0.5);
   z-index: -1;
   border-radius: 15px;
 }
@@ -473,10 +480,32 @@
   flex-direction: column;
   row-gap: 14px;
 }
+.title-new-right{
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+.title-new{
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
 .title-contentbot {
   font-weight: 600;
   font-size: 18px;
   line-height: 24px;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
 }
 .wrap-addtop {
   margin-top: 20;
@@ -657,14 +686,15 @@
   cursor: pointer;
   font-weight: bold;
   display: inline-block;
+  margin-bottom: 10px;
 }
 
 /* Style the dropdown content */
 .dropdown-content {
-  margin-top: 10px;
   display: none;
   z-index: 1;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 /* Show the dropdown content when the user clicks on the dropdown button */

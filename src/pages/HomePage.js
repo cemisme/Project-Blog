@@ -9,20 +9,41 @@ import Layout from "../component/layout/Layout";
 import HomeBanner from "../component/module/home/HomeBanner";
 import HomeFreature from "../component/module/home/HomeFreature";
 import HomeNew from "../component/module/home/HomeNew";
+import {
+  collection,
+  limit,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
 
 const HomePage = () => {
+  // useEffect(() => {
+  //   const colRef = collection(db, "posts");
+  //   const q = query(colRef, where("Hot", "==", true), limit(3));
+  //   onSnapshot(q, (snapshot) => {
+  //     const rs = [];
+  //     snapshot.forEach((item) => {
+  //       rs.push({
+  //         id: item.id,
+  //         ...item.data(),
+  //       });
+  //     });
+      
+  //   });
+  // }, []);
   const { userInfo } = useAuth();
+  console.log(userInfo.uid)
   const navigate = useNavigate();
-  console.log(userInfo);
   // if (!userInfo.email) {
   //   navigate("/signin");
   // }
   const handleSignOut = () => {
     toast.success("Đã Đăng Xuất");
     signOut(auth);
-    setTimeout(()=>{
+    setTimeout(() => {
       navigate("/signin");
-    },2000)
+    }, 2000);
   };
 
   return (

@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import {
   collection,
@@ -15,6 +13,7 @@ import {
   orderBy,
   limit,
   query,
+  setDoc,
 } from "firebase/firestore";
 import Button from "../component/button/Button";
 import { Field } from "../component/field";
@@ -60,12 +59,12 @@ const SignUpPage = () => {
   };
   const navigate = useNavigate();
   const { userInfo } = useAuth();
-  
-    if (userInfo?.email) {
-      navigate("/")
-    } 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
- 
+
+  if (userInfo?.email) {
+    navigate("/");
+  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   const formik = useFormik({
     initialValues: {
       Fullname: "",
@@ -74,25 +73,24 @@ const SignUpPage = () => {
     },
     validate,
     onSubmit: async (values) => {
-      addDoc(colRef, {
-        Fullname: values.Fullname,
-        Email: values.Email,
-        Password: values.Password,
-        createdAt: serverTimestamp(),
-      })
-        .then(() => {
-          console.log("succes");
-        })
-        .catch((err) => {
-          console.log(err);
-          // reset form
-        });
-      await createUserWithEmailAndPassword(auth, values.Email, values.Password, values.Fullname);
+      await createUserWithEmailAndPassword(
+        auth,
+        values.Email,
+        values.Password,
+        values.Fullname
+      );
       formik.setSubmitting &&
         toast.success("Signup success", {
           pauseOnHover: false,
           delay: 0,
         });
+      setDoc(doc(db, "user infor", auth.currentUser.uid), {
+        Fullname: values.Fullname,
+        Email: values.Email,
+        Password: values.Password,
+        createdAt: serverTimestamp(),
+      });
+
       setTimeout(() => {
         formik.setSubmitting(false);
         navigate("/");
@@ -153,7 +151,7 @@ const SignUpPage = () => {
             loading={formik.isSubmitting}
             children={"SignUp"}
           ></Button>
-           <div className="text-signup">
+          <div className="text-signup">
             Bạn đã có tài khoản ?{" "}
             <NavLink to="/signin">
               <span>Đăng nhập </span>
