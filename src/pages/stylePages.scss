@@ -717,7 +717,7 @@
 }
 .dropdown {
   margin-bottom: 200px;
-  max-width: 200px;
+  max-width: 150px;
 }
 .wrap-categories {
   display: flex;
@@ -728,4 +728,7 @@
   font-weight: bolder;
   color: #00A7B4 ;
   font-size: 45px;
+}
+.addnewpage{
+  display: flex;
 }

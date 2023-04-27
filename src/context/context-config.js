@@ -7,13 +7,13 @@ const AuthContext = createContext();
 function AuthProvider(props) {
   const colRef = collection(db, "user infor");
   const [userInfo, setUserInfo] = useState({});
-  const [posts, setPosts] = useState([]);
-  const userName = posts.map((item) => {
+  const [users, setUsers] = useState([]);
+  const userName = users?.map((item) => {
     if (item.Email === userInfo?.email) {
       return item.Fullname;
     }
   });
-  const value = { userName, userInfo, setUserInfo, posts };
+  const value = { userName, userInfo, setUserInfo, users };
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setUserInfo(user);
@@ -26,7 +26,7 @@ function AuthProvider(props) {
           ...doc.data(),
         });
       });
-      setPosts(posts);
+      setUsers(posts);
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

@@ -4,7 +4,6 @@ import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import { Routes, Route, Link, NavLink} from "react-router-dom";
-import   Count  from "./component/Count";
 import FoundPage from "./pages/FoundPage";
 import AddPage from "./pages/AddPage";
 function App() {

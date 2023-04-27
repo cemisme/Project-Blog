@@ -33,7 +33,7 @@ const HomePage = () => {
   //   });
   // }, []);
   const { userInfo } = useAuth();
-  console.log(userInfo.uid)
+  console.log(userInfo)
   const navigate = useNavigate();
   // if (!userInfo.email) {
   //   navigate("/signin");

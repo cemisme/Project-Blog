@@ -13,7 +13,14 @@ import {
   deleteObject,
 } from "firebase/storage";
 import Toggle from "../../button/toggle/Toggle";
-import { addDoc, collection, getDocs, query, serverTimestamp, where } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  query,
+  serverTimestamp,
+  where,
+} from "firebase/firestore";
 import { db } from "../../../firebase-app/firebase-config";
 import { FirebaseError } from "firebase/app";
 import { Dropdown } from "../../dropdown";
@@ -21,7 +28,9 @@ import { useAuth } from "../../../context/context-config";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 const PostAdd = ({ user }) => {
-  console.log(user.uid);
+ useEffect(()=>{
+  document.title="MonkeyBlog-Addnew"
+ },[])
   const navigate = useNavigate();
   const [categoriId, setCategoriId] = useState();
   const [categories, setCategories] = useState([]);
@@ -29,21 +38,21 @@ const PostAdd = ({ user }) => {
   const [image, setImage] = useState("");
   const validate = (values) => {
     const errors = {};
-    if (!values.Title) {
-      errors.Title = "Required";
-    }
-    if (!values.Description) {
-      errors.Description = "Required";
-    }
-    if (!values.Image) {
-      errors.Image = "Required";
-    }
-    if (!values.Content) {
-      errors.Content = "Required";
-    }
-    if (!values.Categories) {
-      errors.Categories = "Required";
-    }
+    // if (!values.Title) {
+    //   errors.Title = "Required";
+    // }
+    // if (!values.Description) {
+    //   errors.Description = "Required";
+    // }
+    // if (!values.Image) {
+    //   errors.Image = "Required";
+    // }
+    // if (!values.Content) {
+    //   errors.Content = "Required";
+    // }
+    // if (!values.Categories) {
+    //   errors.Categories = "Required";
+    // }
     return errors;
   };
   const formik = useFormik({
@@ -70,9 +79,18 @@ const PostAdd = ({ user }) => {
           image: image,
           userId: user.uid,
           categoriId: categoriId,
-          createdAt: serverTimestamp()
+          createdAt: serverTimestamp(),
         });
-        toast.success("Thêm tin thành công");
+        formik.setSubmitting &&
+        toast.success("Thêm tin thành công", {
+          pauseOnHover: false,
+          delay: 0,
+        });
+        setTimeout(() => {
+          
+          navigate("/")
+        }, 1000);
+       
       } catch (error) {}
     },
   });
@@ -163,7 +181,6 @@ const PostAdd = ({ user }) => {
         result.push({
           id: doc.id,
           ...doc.data(),
-          
         });
       });
       setCategories(result);
@@ -326,7 +343,7 @@ const PostAdd = ({ user }) => {
           </div>
         </div>
 
-        <Button type={"submit"} className={"button-add"}>
+        <Button type={"submit"} className={"button-add"} loading={formik.isSubmitting} disabled={formik.isSubmitting}>
           Add new post
         </Button>
       </form>
