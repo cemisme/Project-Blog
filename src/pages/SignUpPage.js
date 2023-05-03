@@ -19,7 +19,7 @@ import Button from "../component/button/Button";
 import { Field } from "../component/field";
 import Input from "../component/input";
 import Label from "../component/label";
-import "./stylePages.scss";
+import "../styles/stylePages.scss";
 import { useFormik } from "formik";
 import { auth, db } from "../firebase-app/firebase-config";
 import GetDocs from "../firebase-app/GetDocs";

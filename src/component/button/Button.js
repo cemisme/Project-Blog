@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { LoadingSpinner } from "../../loading";
-import "../../pages/stylePages.scss";
+import "../../styles/stylePages.scss";
 
 const Button = ({
   children,

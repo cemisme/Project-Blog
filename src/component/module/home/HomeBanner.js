@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../../pages/stylePages.scss";
+import "../../../styles/stylePages.scss";
 import Button from "../../button/Button";
 const HomeBanner = () => {
   const [posts, setPost]=useState()

@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./foundPageStyle.scss";
+import "../styles/foundPageStyle.scss";
 const FoundPage = () => {
   return (
     <div className="logo-found">

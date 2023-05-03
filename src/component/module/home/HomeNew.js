@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../pages/stylePages.scss";
+import "../../../styles/stylePages.scss";
 import PostCategory from "../post/PostCategory";
 import PostTitle from "../post/PostTitle";
 import PostMeta from "../post/PostMeta";

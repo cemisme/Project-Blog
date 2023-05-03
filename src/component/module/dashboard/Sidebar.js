@@ -71,7 +71,7 @@ const sidebarLinks = [
   },
   {
     title: "Category",
-    url: "/manage/category",
+    url: "/category",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -133,6 +133,9 @@ const sidebarLinks = [
 ];
 const Sidebar = () => {
   return (
+    <div style={{marginTop:"70px"}}>
+
+  
     <SidebarStyles className="sidebar">
       {sidebarLinks.map((link) => {
         if (link.onClick)
@@ -150,6 +153,7 @@ const Sidebar = () => {
         );
       })}
     </SidebarStyles>
+    </div>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../../pages/stylePages.scss";
+import "../../styles/stylePages.scss";
 import Button from "../button/Button";
 import { useAuth } from "../../context/context-config";
 

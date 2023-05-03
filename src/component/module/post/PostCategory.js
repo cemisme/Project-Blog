@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../../pages/stylePages.scss";
+import "../../../styles/stylePages.scss";
 
 const PostCategory = ({children, className}) => {
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Input from "../../input";
 import Label from "../../label";
-import "../../../pages/stylePages.scss";
+import "../../../styles/stylePages.scss";
 import { useFormik } from "formik";
 import Button from "../../button/Button";
 import slugify from "slugify";
@@ -19,12 +19,10 @@ import {
   getDocs,
   query,
   serverTimestamp,
+  setDoc,
   where,
 } from "firebase/firestore";
 import { db } from "../../../firebase-app/firebase-config";
-import { FirebaseError } from "firebase/app";
-import { Dropdown } from "../../dropdown";
-import { useAuth } from "../../../context/context-config";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 const PostAdd = ({ user }) => {
@@ -38,21 +36,21 @@ const PostAdd = ({ user }) => {
   const [image, setImage] = useState("");
   const validate = (values) => {
     const errors = {};
-    // if (!values.Title) {
-    //   errors.Title = "Required";
-    // }
-    // if (!values.Description) {
-    //   errors.Description = "Required";
-    // }
-    // if (!values.Image) {
-    //   errors.Image = "Required";
-    // }
-    // if (!values.Content) {
-    //   errors.Content = "Required";
-    // }
-    // if (!values.Categories) {
-    //   errors.Categories = "Required";
-    // }
+    if (!values.Title) {
+      errors.Title = "Required";
+    }
+    if (!values.Description) {
+      errors.Description = "Required";
+    }
+    if (!values.Image) {
+      errors.Image = "Required";
+    }
+    if (!values.Content) {
+      errors.Content = "Required";
+    }
+    if (!values.Categories) {
+      errors.Categories = "Required";
+    }
     return errors;
   };
   const formik = useFormik({
@@ -75,7 +73,6 @@ const PostAdd = ({ user }) => {
       try {
         await addDoc(colRef, {
           ...cloneValues,
-          // categoriesID:formik.values.Categories.id,
           image: image,
           userId: user.uid,
           categoriId: categoriId,
@@ -91,7 +88,9 @@ const PostAdd = ({ user }) => {
           navigate("/")
         }, 1000);
        
-      } catch (error) {}
+      } catch (error) {
+        console.log(error)
+      }
     },
   });
   console.log(formik.values);
@@ -150,7 +149,7 @@ const PostAdd = ({ user }) => {
       });
     }
   }, [categories, formik.values.Categories]);
-  console.log(categoriId);
+  
   function textAreaAdjust1() {
     const a = ref.current;
     a.style.height = "1px";
@@ -329,6 +328,7 @@ const PostAdd = ({ user }) => {
             {categories.length > 0 &&
               categories.map((item) => (
                 <div
+                key={item.name}
                   onClick={() => {
                     formik.setFieldValue("Categories", item.name);
                   }}

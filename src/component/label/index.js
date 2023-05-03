@@ -5,7 +5,7 @@
 // };
 // export {Label};
 import React from 'react';
-import '../../pages/stylePages.scss'
+import '../../styles/stylePages.scss'
 const Label = ({htmlFor,Children, className}) => {
   return (
     <>
